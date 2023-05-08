@@ -1,0 +1,29 @@
+<main class="form-signin w-25 m-auto mt-5">
+    <form  #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+    <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-group form-floating mb-2">
+      <input type="email" (ngModel)="userName" name="userName" class="form-control" id="floatingInput" placeholder="User name ..." required autofocus>
+      <label for="floatingInput">User Name</label>
+      <em class="text-danger" *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseOver)">Required</em>
+    </div>
+    <!-- <div>{{loginForm.controls.password.untouched}}</div> -->
+    <div class="form-group form-floating">
+      <input type="password" (ngModel)="password" name="password" class="form-control" id="floatingPassword" placeholder="User Password ..." required [minlength]="6">
+      <label for="floatingPassword">Password</label>
+      <em class="text-danger" *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseOver)">Required</em>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <span (mouseenter)="mouseOver=true" (mouseleave)="mouseOver=false">
+        <button class="w-30 btn btn-lg btn-primary" [disabled]="loginForm.invalid" type="submit">Sign in</button>
+    </span>
+    <button type="button" class="w-30 m-2 btn btn-lg btn-primary" (click)="cancel(loginForm)">Cancel</button>
+    <!-- <p class="mt-2 mb-3 text-body-secondary">&copy; 2017–2023</p> -->
+  </form>
+</main>
