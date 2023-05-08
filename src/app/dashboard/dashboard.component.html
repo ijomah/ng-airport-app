@@ -78,8 +78,8 @@
                   <tr *ngFor="let flightInfo of filteredFlight">
                     <td *ngIf="flightInfo[2]; else showDis" id="country">{{flightInfo[2]}}</td>
                     <td *ngIf="flightInfo[1]; else showDis" id="airplane-id">{{flightInfo[1]}}</td>
-                    <td *ngIf="flightInfo[3] > 0; else showDis" id="date">{{flightInfo[3] | date}}</td>
-                    <td *ngIf="flightInfo[3] > 0; else showDis" id="time">{{flightInfo[3] | date:'h:mm a z'}}</td>
+                    <td *ngIf="flightInfo[3]; else showDis" id="date">{{flightInfo[3] | date}}</td>
+                    <td *ngIf="flightInfo[3]; else showDis" id="time">{{flightInfo[3] | date:'h:mm a z'}}</td>
                     <td *ngIf="flightInfo[11] > 0; else showDis" id="departure"><i class="bi bi-arrow-up-square-fill"></i></td>
                     <td *ngIf="flightInfo[11] < 0; else showDis" id="arrival"><i class="bi bi-arrow-down-square-fill"></i></td>
                     <ng-template #showDis>
