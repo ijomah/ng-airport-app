@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ApiCallerService } from '../services/api-caller.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Observable } from 'rxjs';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { IFlight } from '../common/data.model';
 // import { NgxSpinnerService } from 'ngx-spinner/public_api';
 import { flightDetailsLocalStorage }  from './../apiData/data';
+import { urls } from '../common/links';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +24,7 @@ import { flightDetailsLocalStorage }  from './../apiData/data';
         //transform: 'translate(300px, 500px )'
       })),
       transition('in => out', [
+
         animate('6s 3s ease-in-out')
       ])
     ]),
@@ -35,28 +39,13 @@ export class DashboardComponent implements OnInit {
   
   filteredFlight: IFlight[] = []
 
-  constructor(private apiServe: ApiCallerService) {
+  constructor(private apiServe: ApiCallerService, private route: Router) {
     //this.flightDetails = flightDetailsLocalStorage;
     this.filteredFlight = this.flightDetails;
    }
   
    ngOnInit(): void {
-    this.apiServe.getApiData()
-      .subscribe(
-        (data: IFlight[]) => {
-          console.log('data:', data)
-          console.log('raw data', Object.entries(data)[1][1]);
-          this.flightDetails = Object.entries(data)[1][1]
-          this.filteredFlight = this.flightDetails.slice(0);
-          //Object.values(data).slice(1);
-          // this.flightDetails = [].concat(...Object.values(data).slice(1));
-          localStorage.setItem('openSkyApi', JSON.stringify(this.flightDetails));
-          console.log("new datas", this.flightDetails);
-        },
-        (err: any) => console.log(err) 
-      );
-  
-      this._textFilter = '';
+    
     }
  
   filterData(text: string) {
@@ -76,15 +65,22 @@ export class DashboardComponent implements OnInit {
       this.zoom = false;    
   }
 
-  // displayAllFlight() {  
-  //   this.apiServe.getApiData()
-  //     .subscribe(
-  //       (data: IFlight[]) => {          
-  //         return this.flightDetails = data;
-  //       },
-  //       (err: any) => console.log(err) 
-  //     );
-  // }
+  timeBetween(time) {
+    console.log(time);
+    this.route.navigate(['/flightTime']);
+  }
+
+  displayAllFlight() {  
+    this.apiServe.getApiData(urls.allStateUrl)
+      .subscribe(
+        (data: IFlight[]) => {
+          this.flightDetails = Object.entries(data)[1][1]
+          this.filteredFlight = this.flightDetails.slice(0);
+          localStorage.setItem('openSkyApi', JSON.stringify(this.flightDetails));
+        },
+        (err: any) => console.log(err) 
+      );
+ }
 
  
 

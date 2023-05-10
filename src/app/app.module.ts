@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { ReactiveFormsModule } from '@angular/forms';
+//import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -14,6 +15,7 @@ import { pageRoutes } from 'src/routes';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ApiCallerService } from './services/api-caller.service';
 import { SearchComponent } from './search/search.component';
+import { FlighttimeComponent } from './flighttime/flighttime.component';
 // import { CurrentComponent } from './timestamp/current/current.component';
 // import { ConverterComponent } from './timestamp/converter/converter.component';
 // import { TimestampService } from './timestamp/timestamp.service';
@@ -27,6 +29,7 @@ import { SearchComponent } from './search/search.component';
     HomeComponent,
     NavbarComponent,
     SearchComponent,
+    FlighttimeComponent,
     // CurrentComponent,
     // ConverterComponent
   ],
@@ -36,7 +39,8 @@ import { SearchComponent } from './search/search.component';
     //ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(pageRoutes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+  //  AngularMyDatePickerModule
   ],
   providers: [ApiCallerService,
     // TimestampService
