@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, NgForm } from '@angular/forms';
 import { AuthServiceService } from '../services/auth-service.service';
 import { Router } from '@angular/router';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { AuthService } from '@auth0/auth0-angular';
 
 
 @Component({
@@ -16,10 +15,10 @@ export class LoginComponent {
   password;
   mouseOver;
   
-  constructor(private Oauth: AuthServiceService, private router: Router) { }
+  constructor(public auth: AuthService, private router: Router) { }
 
   loginUser(userDet) {
-    this.Oauth.login(userDet.userName, userDet.password);
+    this.auth.loginWithPopup();
   this.router.navigate(['/dashboard']);
   }
 

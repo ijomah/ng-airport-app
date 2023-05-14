@@ -30,25 +30,8 @@ export class ApiCallerService {
       }
 
       return throwError(
-        'There was little hitch; please try again later'
+        `There was little hitch; please try again later ${error.error}`
       )
     }
-
-     
-    // getFlightDepartureByAirport(): Observable<IFlight[]> {
-    //   return this.http.get <IFlight[]>("https://opensky-network.org/api/flights/departure?airport=EDDF&begin=1517227200&end=1517230800")
-    //     .pipe(
-    //       retry(5),
-    //       catchError(this.errHandler)
-    //     )
-    // }
-
-    // getFlightArrivalByAirport(): Observable<IFlight[]> {
-    //   return this.http.get <IFlight[]>("https://opensky-network.org/api/flights/arrival?airport=EDDF&begin=1517227200&end=1517230800")
-    //     .pipe(
-    //       retry(5),
-    //       catchError(this.errHandler)
-    //     )
-    // }
 }
 

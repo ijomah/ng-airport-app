@@ -1,16 +1,24 @@
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" >NAFLIGHT Firm<i class="nav-link px-3" *ngIf="auth.isAuthenticated()">Welcomes John</i></a>
-        
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <input class="form-control form-control-dark w-25 rounded-1 border-0" type="text" placeholder="Search" aria-label="Search">
-        
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" >NAFLIGHT Firm
+          <ul *ngIf="auth.user$ | async as user">
+            <li>{{ user.email }}</li>
+          </ul>
+          <!-- <i class="nav-link px-3" *ngIf="auth.isAuthenticated()">Welcomes John</i> -->
+        </a>
         <div class="navbar-nav">
           <div class="nav-item text-nowrap">
-            <a class="nav-link px-3 " (click)="signOut()" *ngIf="auth.isAuthenticated()" routerLink='/home'>Sign out</a>
-            <a class="nav-link px-3" *ngIf="!auth.isAuthenticated()" routerLink='/login'>Sign in</a>
+            <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+              <a class="nav-link px-3" (click)="signOut() " routerLink='/home'>
+                Log out
+              </a>
+            </ng-container>
+        
+            <ng-template #loggedOut>
+              <button (click)="loginUser()">Log in</button>
+            </ng-template>
+            <!-- <a class="nav-link px-3 " (click)="signOut()" *ngIf="auth.isAuthenticated$ | async; else loggedOut" routerLink='/home'>Sign out</a>
+            <a class="nav-link px-3"  *ngIf="!auth.isAuthenticated$" routerLink='/login'>Sign in</a> -->
           </div>
         </div>
     </header>

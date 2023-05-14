@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import { ReactiveFormsModule } from '@angular/forms';
-//import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -16,10 +15,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ApiCallerService } from './services/api-caller.service';
 import { SearchComponent } from './search/search.component';
 import { FlighttimeComponent } from './flighttime/flighttime.component';
-// import { CurrentComponent } from './timestamp/current/current.component';
-// import { ConverterComponent } from './timestamp/converter/converter.component';
-// import { TimestampService } from './timestamp/timestamp.service';
-//import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { AuthButtonComponent } from './common/autho';
+// Imported the module from the SDK
+import { AuthModule } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -30,20 +28,23 @@ import { FlighttimeComponent } from './flighttime/flighttime.component';
     NavbarComponent,
     SearchComponent,
     FlighttimeComponent,
-    // CurrentComponent,
-    // ConverterComponent
+    AuthButtonComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    //ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(pageRoutes),
     BrowserAnimationsModule,
-  //  AngularMyDatePickerModule
+    AuthModule.forRoot({
+      domain: 'dev-0zrhohozrf3syio6.us.auth0.com',
+      clientId: 'iegfxO5efYj9H51CYDWTthGwHCM2N0m4',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    })
   ],
   providers: [ApiCallerService,
-    // TimestampService
   ],
   bootstrap: [AppComponent]
 })

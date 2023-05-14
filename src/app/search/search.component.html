@@ -1,0 +1,43 @@
+
+    <!-- <div>
+      <p>Hi, I wnat to be side-bar</p>
+      <input type="text" [placeholder]="childFilterCountry" #filter>
+      <button class="primary" type="button" (click)="valueForFilter(filter.value)">Search</button>
+   </div> -->
+  
+   <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <button *ngIf="showHideForm" class="btn btn-primary" routerLink="/dashboard">Back</button>
+      <a class="navbar-brand">Search Flight by Time Range 
+        <button *ngIf="showHide" routerLink="/flightTime" type="submit" class="btn btn-primary mx-1">Search</button>
+      </a>
+      <form *ngIf="showHideForm" class="d-flex" #duration="ngForm" (ngSubmit)="timeBetween(duration.value)">
+        <div class="form-row">
+          <div class="d-inline-block form-group col-lg-7">
+            <!-- <label for="examplelabel">Flight From</label> -->
+            <input type="date" (ngModel)="dateBeg" name="dateBeg" class="form-control">
+          </div>
+          <div class="d-inline-block form-group col-lg-5">
+            <input type="time" (ngModel)="timeBeg" name="timeBeg" class="form-control">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="d-inline-block form-group col-lg-7">
+            <!-- <label for="examplelabel">To</label> -->
+            <input type="date" (ngModel)="dateEnd" name="dateEnd" class="form-control">
+          </div>
+          <div class="d-inline-block form-group col-lg-5">
+            <input type="time" (ngModel)="timeEnd" name="timeEnd" class="form-control">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mx-2">Submit</button>
+      </form>  
+      <form *ngIf="showHide" class="d-flex">
+        <input class="form-control me-2" type="search" #filter placeholder="Search Country" aria-label="Search">
+        <button class="btn btn-primary" (click)="valueForFilter(filter.value)" type="submit">Submit</button>
+      </form>
+    </div>
+  </nav>
+
+           

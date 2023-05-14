@@ -1,27 +1,39 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IFlight } from '../common/data.model';
+import { Router, Route } from '@angular/router';
+import { ApiCallerService } from '../services/api-caller.service';
+import { urls } from '../common/links';
 
 @Component({
   selector: 'app-search',
-  template: `
-    <p>
-      <input type="text" [placeholder]="childFilterCountry" #filter>
-      <!-- <button class="primary" type="button" (click)="valueForFilter(filter.value)">Search</button> -->
-    </p>
-  `,
+  templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  timeBeg
+  timeEnd
+  dateBeg
+  dateEnd
+
   
-  @Input() childFilterCountry: string;
-  //@Output() childEvent = new EventEmitter();
-  constructor() { }
+  @Input() showHide
+  @Input() showHideForm
+  
+
+  // @Input() childFilterCountry: string;
+  @Output() childEvent = new EventEmitter();
+  constructor(private apiServe: ApiCallerService, private route: Router) { }
 
   ngOnInit(): void {
   }
 
-  valueForFilter(txt: string) {
-    //this.childEvent.emit(txt);
+  valueForFilter(txt) {
+    this.childEvent.emit(txt);
+  }
+  
+  timeBetween(time) {
+    console.log(time);
+    this.childEvent.emit(time);
   }
 
 }

@@ -10,6 +10,7 @@ import { animateView } from './animate/animation';
 })
 export class AppComponent {
   title = 'hamoyeTest';
+  
   constructor(private contexts: ChildrenOutletContexts) {}
   
   routeWithAnimation() {

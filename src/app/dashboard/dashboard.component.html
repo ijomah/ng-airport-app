@@ -1,57 +1,9 @@
-<div> 
-      <div class="container-fluid">
+ 
+      <app-search [showHide]="show" (childEvent)="filterData($event)"></app-search>
+      <div class="container">
         <div class="row">
-          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
-            <div class="position-sticky mx-1 pt-3 sidebar-sticky">
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">
-                    <span data-feather="home" class="align-text-bottom"></span>
-                    Dashboard
-                  </a>
-                </li>
-                <li class="nav-item mb-5">
-                  <form>
-                    <div class="form-row">
-                      <div class="col">
-                        <input type="text" class="form-control" #filter placeholder="Search Country">
-                      </div>
-                      <button class="btn btn-primary mt-1" (click)="filterData(filter.value)" type="button">Search</button>
-                    </div>
-                  </form>
-                </li>
-                <li class="nav-item">
-                  <form #duration="ngForm" (ngSubmit)="timeBetween(duration)">
-                    <div class="form-row">
-                      <div class="d-inline-block form-group col-lg-7">
-                        <label for="examplelabel">Flight From</label>
-                        <input type="date" ngModel="dateBeg" name="dateBeg" class="form-control">
-                      </div>
-                      <div class="d-inline-block form-group col-lg-5">
-                        <input type="time" ngModel="timeBeg" name="timeBeg" class="form-control">
-                      </div>
-                    </div>
-                    
-                    <div class="form-row">
-                      <div class="d-inline-block form-group col-lg-7">
-                        <label for="examplelabel">To</label>
-                        <input type="date" ngModel="dateEnd" name="dateEnd" class="form-control">
-                      </div>
-                      <div class="d-inline-block form-group col-lg-5">
-                        <input type="time" ngModel="timeEnd" name="timeEnd" class="form-control">
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-1">Submit</button>
-                  </form>  
-                </li>
-              </ul>
-              
-            </div>
-          </nav>
-      
-          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            </div>
+          <main class="col-md-9 ms-sm-auto col-lg px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"></div>
       
             <img src="./../../assets/airplane.jpg" (mouseover)="resizeImg()" [@zoominout]="zoom ? 'in' : 'out'" class="img-fluid mx-auto d-block" style="height: 300px;" alt="Airplane taking off from airport" />
             
@@ -94,5 +46,3 @@
           </main>
         </div>
       </div>
-          
-</div>
