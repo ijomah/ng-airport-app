@@ -9,13 +9,13 @@
         <div class="navbar-nav">
           <div class="nav-item text-nowrap">
             <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-              <a class="nav-link px-3" (click)="signOut() " routerLink='/home'>
+              <button class="btn btn-primary p-1 m-2" (click)="signOut() " routerLink='/home'>
                 Log out
-              </a>
+              </button>
             </ng-container>
         
             <ng-template #loggedOut>
-              <button (click)="loginUser()">Log in</button>
+              <button class="btn btn-primary p-2 m-2" (click)="loginUser()">Log in</button>
             </ng-template>
             <!-- <a class="nav-link px-3 " (click)="signOut()" *ngIf="auth.isAuthenticated$ | async; else loggedOut" routerLink='/home'>Sign out</a>
             <a class="nav-link px-3"  *ngIf="!auth.isAuthenticated$" routerLink='/login'>Sign in</a> -->
