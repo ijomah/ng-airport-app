@@ -1,4 +1,8 @@
 # HamoyeTest
+It is simple that displays the various flights around the world. The information it displays are time of flight, airport information, aircraft identity, country where the airport is located.
+With this web app you search the flight data by country and request for flight in the past.
+It has an authentication process to keep track of the users. To be able to use it, I advice you use any of the social logins provided. Dont you use your email and password option for now. This feature will come up in later updates. 
+Thanks
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.15.
 
