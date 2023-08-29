@@ -1,6 +1,7 @@
 {
   "name": "hamoye-test",
   "version": "0.0.0",
+  "node-environment": "node for this project is version 10.13.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

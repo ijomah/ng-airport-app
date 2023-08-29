@@ -18,6 +18,8 @@ import { FlighttimeComponent } from './flighttime/flighttime.component';
 import { AuthButtonComponent } from './common/autho';
 // Imported the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
+import { TableListComponent } from './table-list/table-list.component';
+import { PreviewComponent } from './preview/preview.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AuthModule } from '@auth0/auth0-angular';
     NavbarComponent,
     SearchComponent,
     FlighttimeComponent,
-    AuthButtonComponent
+    AuthButtonComponent,
+    TableListComponent,
+    PreviewComponent
   ],
   imports: [
     BrowserModule,

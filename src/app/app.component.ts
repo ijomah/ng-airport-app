@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ChildrenOutletContexts } from '@angular/router';
 import { animateView } from './animate/animation';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,14 @@ import { animateView } from './animate/animation';
   animations: [animateView]
 })
 export class AppComponent {
-  title = 'hamoyeTest';
+  title = 'Aircraft Info';
   
-  constructor(private contexts: ChildrenOutletContexts) {}
+  constructor(private contexts: ChildrenOutletContexts, public auth: AuthService) {}
   
   routeWithAnimation() {
+    console.log(this.auth, window.location.origin);
+    console.log('anime value', this.contexts.getContext('primary')?.route?.snapshot?.data?.['jumpIn']);
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.['jumpIn'];
   }
+
 }

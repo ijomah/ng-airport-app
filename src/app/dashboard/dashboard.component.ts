@@ -1,28 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiCallerService } from '../services/api-caller.service';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+// import { trigger, state, style, animate, transition } from '@angular/animations';
 import { IFlight } from '../common/data.model';
 import { urls } from '../common/links';
 import { Router } from '@angular/router';
+import { animateSize } from '../animate/animation';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  animations: [
-    trigger('zoominout', [
-      state('in', style({
-        height: '100px',
-      })),
-      state('out', style({
-         height: '300px',
-      })),
-      transition('in => out', [
-
-        animate('6s 3s ease-in-out')
-      ])
-    ]),
-  ]
+  animations: [animateSize]
 })
 export class DashboardComponent implements OnInit {
   zoom = true
